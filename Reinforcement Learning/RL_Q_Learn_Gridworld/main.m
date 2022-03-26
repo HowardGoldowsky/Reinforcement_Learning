@@ -30,6 +30,7 @@ move  = Reward('move',MOVE_PENALTY);
 learningAlgorithm = QLearning(lengthGrid,epsilon,epsilonDecay,alpha,gamma,trainAgent);
 agent = Agent('player',learningAlgorithm,numEpisodes);
 gridWorld = Environment(lengthGrid,numEpisodes,numIterations);
+display = Display(showEvery);
 
 % Train the agent
 if (learningAlgorithm.trainAgent)
@@ -129,6 +130,7 @@ if (learningAlgorithm.trainAgent)
         
     end % for episode
 end % if (learningAlgorithm.trainAgent)
+display.plotResults(gridWorld,agent,episode);
 
 
 function [agent, environment] = takeAction(agent,environment)    
